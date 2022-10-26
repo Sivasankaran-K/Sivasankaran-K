@@ -1,0 +1,84 @@
+package Banking;
+
+import java.util.Scanner;
+
+class Bank_Details{
+	String Account_Holder_Name;
+	int Account_Number;
+	int Deposit_Amount;
+	int Withdrawl_Amount;
+	int Avaliable_Balance=5000;
+	
+	Scanner scan = new Scanner(System.in);
+	// To add account details
+	public void Add_New_Account() {
+		System.out.println("Enter the Account Holder Name: ");
+		Account_Holder_Name = scan.next();
+		System.out.println("Enter the Account Number: ");
+		Account_Number = scan.nextInt();
+	}
+	// To show the Account Details
+	public void Show_Account_Details() {
+		System.out.println("Account Holder Name: "+Account_Holder_Name);
+		System.out.println("Account Number: "+Account_Number);
+		System.out.println("Avaliable Balance: "+Avaliable_Balance);
+	}
+	//To deposit the amount
+	public void Deposit() {
+		System.out.println("Enter the Amount to Deposit: ");
+		Deposit_Amount = scan.nextInt();
+		System.out.println("Rs "+Deposit_Amount+" is credited to your account");
+		Avaliable_Balance= Avaliable_Balance+Deposit_Amount;
+	}
+	//To withdrawl the amount
+	public void Withdrawl_Amount() {
+		System.out.println("Enter the Amount to Withdrrawl: ");
+		Withdrawl_Amount = scan.nextInt();
+		System.out.println("Rs "+Withdrawl_Amount+" is debited from your account");
+		Avaliable_Balance= Avaliable_Balance-Withdrawl_Amount;
+	}
+	//To check balance
+	public void Check_Balance() {
+		System.out.println("Your account Balance is Rs "+Avaliable_Balance);
+	}
+}
+public class Banking_Application {
+	public static void main(String args[]) {
+		int d = 0;
+		Bank_Details obj = new Bank_Details();
+		System.out.println("Welcome to Siva Bank");
+		obj.Add_New_Account();
+		Scanner scan = new Scanner(System.in);
+	   while(d==0){
+		System.out.println("Press 1 to View Account Details \nPress 2 to Deposit the amount\nPress 3 to Withdrawl the amount\nPress 4 to Check Balance \nPress 5 to Exit");
+		int choice = scan.nextInt(); 
+		switch(choice) {
+		case 1:
+			obj.Show_Account_Details();
+			System.out.println();
+			break;
+		case 2:
+			obj.Deposit();
+			System.out.println();
+			break;
+		case 3:
+			obj.Withdrawl_Amount();
+			System.out.println();
+			break;
+		case 4:
+			obj.Check_Balance();
+			System.out.println();
+			break;
+		case 5:
+			d=1;
+			 System.out.println("Thank You...!");
+			 break;
+		default:	
+			System.out.println("You have entered the number "+choice+" which is wrong!\nKindly check the number and enter correctly!");
+			System.out.println();
+		     break;
+		}
+		}	
+	}
+}
+
